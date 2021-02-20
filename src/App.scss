@@ -132,3 +132,63 @@
      transition: background-color .3s ease;
      overflow: hidden;
    }
+
+   .main_detail{
+     width: 80%;
+     height: 100%;
+     margin: 50px auto;
+     padding: 50px 0 0;
+     box-sizing: border-box;
+     
+    .card_img_detail{
+      margin-top: -20px;
+     .img-detail{
+       height: 520px;
+       width: 500px;
+    }
+    }
+    .product_detail{
+      margin-top: -20px;
+      h1{
+        color: $white;
+      }
+      .detail_header{
+        padding-top: 20px;
+        .product_name{
+          font-size: 30px;
+          color: $white;
+          font-weight: bold;
+        }
+        .product_price{
+          color: rgba($white, .3);
+          font-size: 22px;
+           color: $cta;
+           margin-top: -10px;
+           font-weight: bold;
+          span{
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+            padding-right: 5px;
+          }
+        }
+        .product_description{
+          color: $white;
+          text-align: justify;
+          line-height: 2;
+          margin-bottom: 30px;
+        }
+        .btn{
+          height: 50px;
+          width: 200px;
+          font-size: 18px;
+        }
+        .btn:hover{
+          background-color: $cta;
+          color: $white;
+        }      
+      }
+    }
+   }
+   
+   
