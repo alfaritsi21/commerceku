@@ -1,14 +1,15 @@
 import './App.css';
+import './App.scss';
+import 'antd/dist/antd.css';
 import Header from "./components/Header";
 import ProductList from "./components/ProductList";
-import Footer from "./components/Footer";
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Header />
       <ProductList />
-      <Footer />
     </div>
   );
 }

@@ -1,18 +1,13 @@
 import React from 'react'
-import './Header.css'
+import { ShoppingCartOutlined } from '@ant-design/icons';
 
 function Header() {
   return (
     <nav>
       <div className="logo">CommerceKu</div>
-      <ul>
-        <li>Home</li>
-        <li>Our Products</li>
-        <li>About Us</li>
-      </ul>
-      <div className="search">
-        <i className="fa fa-search"></i>
-        <i className="fa fa-shopping-basket"></i>
+      <div className="cart">
+        <ShoppingCartOutlined style={{ fontSize: "30px" }} />
+        <p>0</p>
       </div>
     </nav>
   )

@@ -1,11 +1,26 @@
 import React from 'react'
-import './ProductList.css';
+import product_card from "../data/product_data"
 
 
-function ProductList() {
+const ProductList = () => {
+  console.log(product_card)
+
+  const listItems = product_card.map((item) =>
+    <div className="card" key={item.id}>
+      <div className="card_img">
+        <img className="img" src={item.thumb} alt="images" />
+      </div>
+      <div className="card_header">
+        <h2>{item.product_name}</h2>
+        <p className="price"><span>{item.currency}</span>{item.price}</p>
+        <div className="btn">Add to cart</div>
+      </div>
+    </div>
+  )
+
   return (
-    <div>
-      <h1>Product List</h1>
+    <div className="main_content">
+      {listItems}
     </div>
   )
 }
