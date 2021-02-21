@@ -186,9 +186,77 @@
         .btn:hover{
           background-color: $cta;
           color: $white;
-        }      
+        }     
       }
     }
+    .cart{
+      height: 500px;
+      .container-cart{
+        background-color: $cta;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      .product-cart{
+        display: flex;
+        .label-name{
+          font-weight: bold;
+          margin-top: -6px;
+          margin-right: 20px;
+          font-size: 20px;
+          color: $white;
+        }
+      }
+      .edit-cart{
+        display: flex;
+        .label-quantity{
+          font-weight: bold;
+          margin: -6px 10px;
+          font-size: 20px;
+          color: $white;
+        }
+      }
+      .cart_price{
+        color: $white;
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 20px;
+      }
+    }
+    .container-subtotal{
+      height: 200px;
+      border-radius: 10px;
+      margin-top: 78px;
+      .cart_subtotal{
+        text-align: center;
+        color: $white;
+        font-size: 35px;
+        font-weight: bold;
+        padding-top: 20px;
+        span{
+          font-size: 16px;
+          color: $cta;
+          display: inline-block;
+          vertical-align: top;
+          padding-right: 5px;
+        }
+           
+      }
+      .btn{
+        height: 50px;
+        width: 200px;
+        font-size: 18px;
+        margin-left: 45px;
+      }
+      .btn:hover{
+        background-color: $cta;
+        color: $white;
+      }  
+    }
    }
+
+   
+
+   
    
    

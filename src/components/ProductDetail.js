@@ -12,7 +12,6 @@ const ProductDetail = () => {
                 src="./images/6.png"
               />
             </Image.PreviewGroup>
-            {/* <img className="img-detail" src="./images/6.png" alt="images" /> */}
           </div>
         </Col>
         <Col span={12}>
