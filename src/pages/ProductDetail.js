@@ -1,8 +1,12 @@
 import React from 'react'
+import { useParams } from "react-router-dom";
 import { Row, Col, Image } from 'antd';
+import product_card from "../data/product_data"
 
-const ProductDetail = ({ detail }) => {
+const ProductDetail = () => {
 
+  let { id } = useParams();
+  const detail = product_card[id - 1]
 
   return (
     <div className="main_detail">

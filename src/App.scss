@@ -41,6 +41,7 @@
      color: $white;
      .logo{
        font-size: 30px;
+       cursor: pointer;
      }
      .cart{
       @extend .dFlex
@@ -142,6 +143,7 @@
      
     .card_img_detail{
       margin-top: -20px;
+      margin-left: -60px;
      .img-detail{
        height: 520px;
        width: 500px;
