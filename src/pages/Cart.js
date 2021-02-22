@@ -1,12 +1,17 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Checkbox, Divider, Image } from 'antd';
 import { MinusCircleOutlined, PlusCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import { minusQuantity, plusQuantity, removeItem } from '../store/action'
 
 const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = [' '];
 
-const ProductDetail = () => {
+const Cart = () => {
+  const cartItems = useSelector(state => state.cartItems)
+  const dispatch = useDispatch()
+
 
   const [checkedList, setCheckedList] = React.useState([]);
   const [indeterminate, setIndeterminate] = React.useState(true);
@@ -37,68 +42,42 @@ const ProductDetail = () => {
               Check all
             </Checkbox>
             <Divider />
-            <div className="container-cart">
-              <Row>
-                <Col span={1}>
-                  <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+            {
+              cartItems.map((data) => {
+                const { item, quantity } = data
 
-                </Col>
-                <Col span={23}>
+                return <div className="container-cart">
                   <Row>
-                    <Col span={3}><Image
-                      width={80}
-                      src="./images/6.png"
-                    /></Col>
-                    <Col span={16}>
-                      <div className="product-cart">
-                        <p className="label-name">Nama Produk</p>
-                        <DeleteOutlined style={{ fontSize: "18px", color: "white", cursor: "pointer" }} />
+                    <Col span={1}>
+                      <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
 
-                      </div>
-                      <div className="edit-cart">
-                        <MinusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} />
-                        <p className="label-quantity">1</p>
-                        <PlusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} />
-                      </div>
                     </Col>
-                    <Col span={4}><p className="cart_price"><span>Rp</span>4000000</p></Col>
-                  </Row>
-                </Col>
-              </Row>
-            </div>
+                    <Col span={23}>
+                      <Row>
+                        <Col span={4}><Image
+                          width={80}
+                          src={item.thumb}
+                        /></Col>
+                        <Col span={14}>
+                          <div className="product-cart">
+                            <p className="label-name">{item.product_name}</p>
+                            <DeleteOutlined style={{ fontSize: "18px", color: "white", cursor: "pointer" }} onClick={() => dispatch(removeItem(item))} />
 
-
-
-            <div className="container-cart">
-              <Row>
-                <Col span={1}>
-                  <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
-
-                </Col>
-                <Col span={23}>
-                  <Row>
-                    <Col span={3}><Image
-                      width={80}
-                      src="./images/6.png"
-                    /></Col>
-                    <Col span={16}>
-                      <div className="product-cart">
-                        <p className="label-name">Nama Produk</p>
-                        <DeleteOutlined style={{ fontSize: "18px", color: "white", cursor: "pointer" }} />
-
-                      </div>
-                      <div className="edit-cart">
-                        <MinusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} />
-                        <p className="label-quantity">1</p>
-                        <PlusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} />
-                      </div>
+                          </div>
+                          <div className="edit-cart">
+                            <MinusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} onClick={() => dispatch(minusQuantity(item))} />
+                            <p className="label-quantity">{quantity}</p>
+                            <PlusCircleOutlined style={{ fontSize: "20px", color: "white", cursor: "pointer" }} onClick={() => dispatch(plusQuantity(item))} />
+                          </div>
+                        </Col>
+                        <Col span={5}><p className="cart_price"><span>{item.currency} </span>{item.price}</p></Col>
+                      </Row>
                     </Col>
-                    <Col span={4}><p className="cart_price"><span>Rp</span>4000000</p></Col>
                   </Row>
-                </Col>
-              </Row>
-            </div>
+                </div>
 
+              })
+            }
           </Col>
           <Col span={1}>
 
@@ -119,4 +98,4 @@ const ProductDetail = () => {
   )
 }
 
-export default ProductDetail
+export default Cart
