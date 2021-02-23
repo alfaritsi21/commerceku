@@ -1,15 +1,39 @@
 import React from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { Row, Col, Image } from 'antd';
+import { Row, Col, Image, Modal } from 'antd';
 import product_card from "../data/product_data"
 import { addItem } from '../store/action';
+import { formatCurrency } from '../util';
 
 const ProductDetail = () => {
 
   const dispatch = useDispatch()
   let { id } = useParams();
   const detail = product_card[id - 1]
+
+
+  let history = useHistory();
+
+
+  const success = () => {
+
+    const handleOk = () => {
+      history.push('/cart')
+    };
+
+    Modal.success({
+      title: 'Your order has been added into cart',
+      okText: "Go to cart",
+      onOk() { handleOk() },
+
+    });
+  }
+
+  const addToCart = () => {
+    dispatch(addItem(detail, 1))
+    success()
+  }
 
   return (
     <div className="main_detail">
@@ -29,9 +53,10 @@ const ProductDetail = () => {
             <hr />
             <div className="detail_header">
               <p className="product_name">{detail.product_name}</p>
-              <p className="product_price"><span>{detail.currency}</span>{detail.price}</p>
+              <p className="product_price"><span>{detail.currency}</span>{formatCurrency(detail.price)}</p>
               <p className="product_description">{detail.description}</p>
-              <div className="btn" onClick={() => dispatch(addItem(detail, 1))}>Add to cart</div>
+
+              <div className="btn" onClick={() => addToCart()}>Add to cart</div>
             </div>
           </div>
         </Col>

@@ -110,7 +110,6 @@
      .card:hover{
        background-color: $light_bg;
        transform: scale(1.1);
-       cursor: pointer;
      }
      .card:hover{
       .btn{
@@ -192,12 +191,18 @@
       }
     }
     .cart{
-      height: 500px;
+      min-height: 500px;
       .container-cart{
         background-color: $cta;
         padding: 10px;
         border-radius: 10px;
         margin-bottom: 10px;
+      }
+      .cart_empty{
+        color: $white;
+        text-align: center;
+        font-size: 30px;
+        padding-top: 30px;
       }
       .product-cart{
         display: flex;
@@ -248,7 +253,7 @@
         height: 50px;
         width: 200px;
         font-size: 18px;
-        margin-left: 45px;
+        margin-left: 30px;
       }
       .btn:hover{
         background-color: $cta;
